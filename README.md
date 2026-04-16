@@ -1,6 +1,7 @@
-# braille-pattern-cli-loading-indicator [![CircleCI](https://circleci.com/gh/6/braille-pattern-cli-loading-indicator.svg?style=svg)](https://circleci.com/gh/6/braille-pattern-cli-loading-indicator) [![NPM Version](http://img.shields.io/npm/v/braille-pattern-cli-loading-indicator.svg?style=flat)](https://www.npmjs.org/package/braille-pattern-cli-loading-indicator)
+# braille-pattern-cli-loading-indicator [![Test](https://github.com/edisoncks/braille-pattern-cli-loading-indicator/actions/workflows/test.yml/badge.svg)](https://github.com/edisoncks/braille-pattern-cli-loading-indicator/actions/workflows/test.yml) [![NPM Version](http://img.shields.io/npm/v/braille-pattern-cli-loading-indicator.svg?style=flat)](https://www.npmjs.org/package/braille-pattern-cli-loading-indicator)
 
-Animated command line loading indicator using Unicode braille patterns (based on Heroku CLI).
+Animated command line loading indicator using Unicode braille patterns (based on
+Heroku CLI).
 
 <table>
   <thead>
@@ -15,20 +16,20 @@ Animated command line loading indicator using Unicode braille patterns (based on
     <td>large</td>
     <td>cw</td>
     <td>
-      <img src="https://raw.githubusercontent.com/6/braille-pattern-cli-loading-indicator/master/examples/sample.gif" width="177">
+      <img src="https://raw.githubusercontent.com/edisoncks/braille-pattern-cli-loading-indicator/main/examples/sample.gif" width="177">
     </td>
     <td>
-      <a href="https://github.com/6/braille-pattern-cli-loading-indicator/blob/master/examples/formatted.js">examples/formatted.js</a>
+      <a href="https://github.com/edisoncks/braille-pattern-cli-loading-indicator/blob/main/examples/formatted.js">examples/formatted.js</a>
     </td>
   </tr>
   <tr>
     <td>small</td>
     <td>ccw</td>
     <td>
-      <img src="https://raw.githubusercontent.com/6/braille-pattern-cli-loading-indicator/master/examples/sample2.gif" width="177">
+      <img src="https://raw.githubusercontent.com/edisoncks/braille-pattern-cli-loading-indicator/main/examples/sample2.gif" width="177">
     </td>
     <td>
-      <a href="https://github.com/6/braille-pattern-cli-loading-indicator/blob/master/examples/formatted-multicolor.js">examples/formatted-multicolor.js</a>
+      <a href="https://github.com/edisoncks/braille-pattern-cli-loading-indicator/blob/main/examples/formatted-multicolor.js">examples/formatted-multicolor.js</a>
     </td>
   </tr>
 </table>
@@ -37,27 +38,30 @@ Animated command line loading indicator using Unicode braille patterns (based on
 
 - Use `start()` and `stop()` to enable or disable the loading indicator.
 - Optionally specify `rotation` as `cw` (clockwise) or `ccw` (counterclockwise)
-- Optionally provide a custom `format` function to add text or colors for the loading indicator.
+- Optionally provide a custom `format` function to add text or colors for the
+  loading indicator.
 
 ```javascript
-"use strict";
-const LoadingIndicator = require("braille-pattern-cli-loading-indicator");
+// ESM
+import LoadingIndicator from "braille-pattern-cli-loading-indicator";
+
+// CommonJS
+const LoadingIndicator = require("braille-pattern-cli-loading-indicator").default;
 
 const loader = new LoadingIndicator({
   size: "large",
   rotation: "cw",
-  format: function (pattern) {
-    return "charging plasma cannon " + pattern;
-  },
+  format: (pattern) => `charging plasma cannon ${pattern}`,
 });
 
 // Display loading indicator for 5 seconds, and then stop.
 loader.start();
-setTimeout(function () {
+setTimeout(() => {
   loader.stop();
 }, 5000);
 ```
 
 # credits
 
-heavily inspired by [heroku cli](https://github.com/heroku/heroku) loading indicator
+heavily inspired by [heroku cli](https://github.com/heroku/heroku) loading
+indicator
