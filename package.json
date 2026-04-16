@@ -1,6 +1,6 @@
 {
   "name": "@edisoncks/cli-loading-indicator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Animated CLI loading indicator using Unicode braille patterns",
   "main": "dist/index.cjs",
   "types": "index.d.ts",
