@@ -1,4 +1,4 @@
-declare module "braille-pattern-cli-loading-indicator" {
+declare module "@edisoncks/cli-loading-indicator" {
   interface LoadingIndicatorOptions {
     /** Size of the loading indicator pattern ('small' or 'large'). Default: 'large' */
     size?: "small" | "large";
