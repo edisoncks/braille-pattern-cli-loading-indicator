@@ -45,4 +45,51 @@ describe("LoadingIndicator", () => {
     const loader = new LoadingIndicator({ interval: 100 });
     expect(loader.interval).toBe(100);
   });
+
+  it("should start without error", () => {
+    const loader = new LoadingIndicator();
+    expect(() => loader.start()).not.toThrow();
+    loader.stop();
+  });
+
+  it("should stop without error after start", () => {
+    const loader = new LoadingIndicator();
+    loader.start();
+    expect(() => loader.stop()).not.toThrow();
+  });
+
+  it("should allow restart after stop", () => {
+    const loader = new LoadingIndicator();
+    loader.start();
+    loader.stop();
+    expect(() => loader.start()).not.toThrow();
+    loader.stop();
+  });
+
+  it("should stop multiple times without error", () => {
+    const loader = new LoadingIndicator();
+    loader.start();
+    loader.stop();
+    expect(() => loader.stop()).not.toThrow();
+  });
+
+  it("should cycle through all patterns", () => {
+    const loader = new LoadingIndicator({ size: "large", interval: 10 });
+    const originalFormat = loader.format;
+    const seenPatterns = [];
+    loader.format = (pattern, index) => {
+      seenPatterns.push({ pattern, index });
+      return originalFormat(pattern);
+    };
+    loader.start();
+    // Wait long enough to see multiple cycles
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        loader.stop();
+        // Should have cycled through patterns multiple times
+        expect(seenPatterns.length).toBeGreaterThan(loader.patterns.length);
+        resolve();
+      }, 100);
+    });
+  });
 });
