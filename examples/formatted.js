@@ -1,7 +1,7 @@
 "use strict";
 
 import chalk from "chalk";
-import LoadingIndicator from "../index.js";
+import LoadingIndicator from "#lib";
 
 const loadingIndicator = new LoadingIndicator({
   size: "large",

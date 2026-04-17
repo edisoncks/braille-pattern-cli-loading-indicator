@@ -1,6 +1,6 @@
 "use strict";
 
-import LoadingIndicator from "../index.js";
+import LoadingIndicator from "#lib";
 
 const loadingIndicator = new LoadingIndicator({ size: "large" });
 
